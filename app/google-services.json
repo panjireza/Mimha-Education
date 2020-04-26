@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "693234447008",
+    "firebase_url": "https://mimhaeducation-2f9be.firebaseio.com",
+    "project_id": "mimhaeducation-2f9be",
+    "storage_bucket": "mimhaeducation-2f9be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693234447008:android:7dc559424ae0abd6790fc5",
+        "android_client_info": {
+          "package_name": "com.example.mimhaeducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693234447008-4jv1er3359i4idpbjrs8tpa22qg2m9ob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mimhaeducation",
+            "certificate_hash": "3af557f702c0a459ea7b8dce25ab952828676af1"
+          }
+        },
+        {
+          "client_id": "693234447008-cegmfdsnfue7coenbgr2f095c7vu2nhq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDen8ZXno3xd8IsuDJpyZULJOOeXGcD1B0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693234447008-cegmfdsnfue7coenbgr2f095c7vu2nhq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

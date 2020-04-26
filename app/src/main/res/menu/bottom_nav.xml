@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_beranda"
+        android:icon="@drawable/ic_beranda_orange_24dp"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_jadwal"
+        android:icon="@drawable/ic_jadwal_orange_24dp"
+        android:title="Jadwal"/>
+
+    <item
+        android:id="@+id/nav_nilai"
+        android:icon="@drawable/ic_nilai_orange_24dp"
+        android:title="Nilai"/>
+
+    <item
+        android:id="@+id/nav_bio"
+        android:icon="@drawable/ic_bio_orange_24dp"
+        android:title="Biodata"/>
+</menu>
