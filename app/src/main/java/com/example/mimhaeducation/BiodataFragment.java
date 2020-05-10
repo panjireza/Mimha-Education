@@ -40,7 +40,7 @@ public class BiodataFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("siswa");
+        databaseReference = firebaseDatabase.getReference("siswa").child("users");
 
         tvEmail=view.findViewById(R.id.tvEmail);
         tvNama=view.findViewById(R.id.tvNama);

@@ -25,7 +25,7 @@ import io.opencensus.tags.TagContext;
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     EditText etNama, etEmail, etPassword, etNis;
-    Button btRegister;
+    Button btRegister, btnLogin;
 
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
@@ -41,16 +41,25 @@ public class RegisterActivity extends AppCompatActivity {
         etNis = findViewById(R.id.etNis);
         etPassword = findViewById(R.id.etPasword);
         btRegister = findViewById(R.id.btRegister);
+        btnLogin = findViewById(R.id.btnLogin);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("siswa");
+        databaseReference = FirebaseDatabase.getInstance().getReference("siswa").child("users");
         firebaseAuth = FirebaseAuth.getInstance();
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String nama = etNama.getText().toString();
                 final String email = etEmail.getText().toString();
-                final String nis = etNama.getText().toString();
+                final String nis = etNis.getText().toString();
                 final String password = etPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email) && TextUtils.isEmpty(nama) &&
@@ -70,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             password
                                     );
 
-                                    FirebaseDatabase.getInstance().getReference("siswa")
+                                    FirebaseDatabase.getInstance().getReference("siswa").child("users")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(siswa).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
