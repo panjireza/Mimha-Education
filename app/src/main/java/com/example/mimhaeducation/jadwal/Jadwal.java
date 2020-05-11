@@ -1,4 +1,4 @@
-package com.example.mimhaeducation;
+package com.example.mimhaeducation.jadwal;
 
 public class Jadwal {
 

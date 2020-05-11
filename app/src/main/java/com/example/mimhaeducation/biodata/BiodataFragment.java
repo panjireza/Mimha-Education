@@ -1,4 +1,4 @@
-package com.example.mimhaeducation;
+package com.example.mimhaeducation.biodata;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.mimhaeducation.LoginActivity;
+import com.example.mimhaeducation.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,14 +49,14 @@ public class BiodataFragment extends Fragment {
         tvNis=view.findViewById(R.id.tvNis);
         btnLogout=view.findViewById(R.id.btnLogout);
 
-        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
+        Query query =databaseReference.orderByChild("Email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String nama = ""+ds.child("nama").getValue();
-                    String email = ""+ds.child("email").getValue();
-                    String nis = ""+ds.child("nis").getValue();
+                    String nama = ""+ds.child("Nama").getValue();
+                    String email = ""+ds.child("Email").getValue();
+                    String nis = ""+ds.child("Nis").getValue();
 
                     tvEmail.setText(email);
                     tvNama.setText(nama);
@@ -74,7 +76,7 @@ public class BiodataFragment extends Fragment {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 getActivity().getFragmentManager().popBackStack();
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,5 @@
-package com.example.mimhaeducation;
+package com.example.mimhaeducation.jadwal;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.mimhaeducation.R;
+
 import java.util.List;
 
 class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalVH> {

@@ -1,4 +1,4 @@
-package com.example.mimhaeducation;
+package com.example.mimhaeducation.jadwal;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
+import com.example.mimhaeducation.R;
+import com.example.mimhaeducation.jadwal.Jadwal;
+import com.example.mimhaeducation.jadwal.JadwalAdapter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class JadwalFragment extends Fragment {
@@ -79,7 +80,8 @@ public class JadwalFragment extends Fragment {
 
     private void initData() {
         jadwalList = new ArrayList<>();
-        jadwalList.add(new Jadwal("Senin", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
+        String senin = "senin";
+        jadwalList.add(new Jadwal(senin, "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
         jadwalList.add(new Jadwal("Selasa", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
         jadwalList.add(new Jadwal("Rabu", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
     }
