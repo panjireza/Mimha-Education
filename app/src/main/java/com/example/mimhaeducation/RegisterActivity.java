@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +26,8 @@ import io.opencensus.tags.TagContext;
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     EditText etNama, etEmail, etPassword, etNis;
-    Button btRegister, btnLogin;
+    Button btRegister;
+    TextView tvLogin;
 
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
@@ -41,12 +43,12 @@ public class RegisterActivity extends AppCompatActivity {
         etNis = findViewById(R.id.etNis);
         etPassword = findViewById(R.id.etPasword);
         btRegister = findViewById(R.id.btRegister);
-        btnLogin = findViewById(R.id.btnLogin);
+        tvLogin = findViewById(R.id.tvLogin);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("siswa").child("users");
         firebaseAuth = FirebaseAuth.getInstance();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);

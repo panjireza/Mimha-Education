@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/imageProfile"
-        android:layout_width="201dp"
+        android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/bg_splashscreen"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/logo_mimha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,86 +19,79 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email : "
-        android:textSize="24sp"
+        android:text="Email"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imageProfile"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="10dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
 
     <TextView
         android:id="@id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="rezapanji1@gmail.com"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        android:textSize="20sp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/nama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama : "
-        android:textSize="24sp"
+        android:text="Nama"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="10dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <TextView
         android:id="@+id/tvNama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Muhammad P"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/nama"
+        android:textSize="20sp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nama" />
 
     <TextView
         android:id="@+id/nis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nis : "
-        android:textSize="24sp"
+        android:text="NIS"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvNama"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="10dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNama" />
 
     <TextView
         android:id="@+id/tvNis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="112233"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/nis"
+        android:textSize="20sp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nis" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_button"
         android:text="logout"
-        app:layout_constraintTop_toBottomOf="@id/tvNis"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNis" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

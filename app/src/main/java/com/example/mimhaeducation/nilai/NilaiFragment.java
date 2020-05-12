@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class NilaiFragment extends Fragment {
@@ -72,10 +73,15 @@ public class NilaiFragment extends Fragment {
                     String olahraga = ""+ds.child("olahraga").getValue();
                     String agama = ""+ds.child("agama").getValue();
 
-                    nilaiMath.setText(math);
-                    nilaiBind.setText(bind);
-                    nilaiOlahragaa.setText(olahraga);
-                    nilaiAgama.setText(agama);
+                    Double mathConvert = Double.parseDouble(math);
+                    Double bindConvert = Double.parseDouble(bind);
+                    Double orConvert = Double.parseDouble(olahraga);
+                    Double agamaConvert = Double.parseDouble(agama);
+
+                    nilaiMath.setText(String.format("%.2f", mathConvert));
+                    nilaiBind.setText(String.format("%.2f", bindConvert));
+                    nilaiOlahragaa.setText(String.format("%.2f", orConvert));
+                    nilaiAgama.setText(String.format("%.2f", agamaConvert));
                 }
             }
 

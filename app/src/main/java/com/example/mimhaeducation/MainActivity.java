@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     public Fragment createFragment() {
-        return new BerandaFragment().newInstance();
+        return new JadwalFragment();
     }
 
     @Override
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFrag = null;
 
                     switch (menuItem.getItemId()) {
-                        case R.id.nav_beranda:
-                            selectedFrag = new BerandaFragment();
-                            break;
+//                        case R.id.nav_beranda:
+//                            selectedFrag = new BerandaFragment();
+//                            break;
                         case R.id.nav_jadwal:
                             selectedFrag = new JadwalFragment();
                             break;

@@ -26,7 +26,7 @@ public class JadwalFragment extends Fragment {
 
     List<Jadwal> jadwalList;
 
-    TextView dateTextView;
+    TextView dateTextView, timeTextView;
 
     @Nullable
     @Override
@@ -53,10 +53,14 @@ public class JadwalFragment extends Fragment {
                         @Override
                         public void run() {
                             dateTextView = view.findViewById(R.id.currentDate);
+                            timeTextView = view.findViewById(R.id.currentTime);
                             long date = System.currentTimeMillis();
-                            SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy\n \t\thh:mm:ss a");
-                            String dateString = sdf.format(date);
+                            SimpleDateFormat sdfDate = new SimpleDateFormat("dd MMMM yyyy");
+                            SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm a");
+                            String dateString = sdfDate.format(date);
+                            String timeString = sdfTime.format(date);
                             dateTextView.setText(dateString);
+                            timeTextView.setText(timeString);
                         }
                     });
                 }
@@ -80,8 +84,7 @@ public class JadwalFragment extends Fragment {
 
     private void initData() {
         jadwalList = new ArrayList<>();
-        String senin = "senin";
-        jadwalList.add(new Jadwal(senin, "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
+        jadwalList.add(new Jadwal("Senin", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
         jadwalList.add(new Jadwal("Selasa", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
         jadwalList.add(new Jadwal("Rabu", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
     }

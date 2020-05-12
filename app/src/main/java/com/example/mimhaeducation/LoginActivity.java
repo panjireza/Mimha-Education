@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editTextNis, editTextPass;
     Button btLogin;
+    TextView tvRegistrasi;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
     private DatabaseReference ref;
@@ -44,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextNis = findViewById(R.id.et_nis);
         editTextPass = findViewById(R.id.et_pass);
         btLogin = findViewById(R.id.login);
+        tvRegistrasi = findViewById(R.id.tvRegistrasi);
 
         ref = FirebaseDatabase.getInstance().getReference().child("auth");
 
@@ -60,6 +63,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+        tvRegistrasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
