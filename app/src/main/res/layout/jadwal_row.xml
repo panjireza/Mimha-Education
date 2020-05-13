@@ -16,6 +16,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/arrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/arrowUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@drawable/ic_keyboard_arrow_up_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/hari"
                 android:layout_width="0dp"
@@ -31,18 +49,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandableLayout"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hari">
 
                 <TextView
-                    android:id="@+id/matpel_satu"
+                    android:id="@+id/tanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
                     android:paddingLeft="16dp"
+                    android:paddingBottom="8dp"
                     android:text="Matematika"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +69,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/tanggal"
+                    android:id="@+id/matpel_satu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
@@ -59,7 +78,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/matpel_satu"/>
+                    app:layout_constraintTop_toBottomOf="@+id/tanggal"/>
 
                 <TextView
                     android:id="@+id/kd"
@@ -67,11 +86,12 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
                     android:paddingLeft="16dp"
+                    android:paddingBottom="16dp"
                     android:text="Bahasa Inggris"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tanggal"/>
+                    app:layout_constraintTop_toBottomOf="@+id/matpel_satu"/>
 
 
 

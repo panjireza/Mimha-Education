@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class JadwalAdapter {
         private TextView mMapel;
         private TextView mTanggal;
         private TextView mKd;
+        private ImageView mArrowDown, mArrowUp;
 
         private String key;
         ConstraintLayout expandableLayoutNilai;
@@ -47,6 +49,8 @@ public class JadwalAdapter {
             mMapel = (TextView) itemView.findViewById(R.id.matpel_satu);
             mTanggal = (TextView) itemView.findViewById(R.id.tanggal);
             mKd = (TextView) itemView.findViewById(R.id.kd);
+            mArrowDown = (ImageView) itemView.findViewById(R.id.arrowDown);
+            mArrowUp = (ImageView) itemView.findViewById(R.id.arrowUp);
 
             expandableLayoutNilai = itemView.findViewById(R.id.expandableLayout);
 
@@ -91,6 +95,13 @@ public class JadwalAdapter {
 
             boolean isExpanded = mJadwalAdapter.mJadwalList.get(position).isExpanded();
             holder.expandableLayoutNilai.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+            if (isExpanded == true){
+                holder.mArrowDown.setVisibility(View.GONE);
+                holder.mArrowUp.setVisibility(View.VISIBLE);
+            }else {
+                holder.mArrowUp.setVisibility(View.GONE);
+                holder.mArrowDown.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
