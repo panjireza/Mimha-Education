@@ -4,9 +4,9 @@ public class Jadwal {
 
     private String hari;
     private String matpelSatu;
-    private String matpelDua;
-    private String matpelTiga;
-    private String matpelEmpat;
+    private String tanggal;
+    private String kd;
+
     private boolean expanded;
 
     public boolean isExpanded() {
@@ -17,13 +17,15 @@ public class Jadwal {
         this.expanded = expanded;
     }
 
-    public Jadwal(String hari, String matpelSatu, String matpelDua, String matpelTiga, String matpelEmpat) {
+    public Jadwal() {
+    }
+
+    public Jadwal(String hari, String matpelSatu, String tanggal, String kd, boolean expanded) {
         this.hari = hari;
         this.matpelSatu = matpelSatu;
-        this.matpelDua = matpelDua;
-        this.matpelTiga = matpelTiga;
-        this.matpelEmpat = matpelEmpat;
-        this.expanded = false;
+        this.tanggal = tanggal;
+        this.kd = kd;
+        this.expanded = expanded;
     }
 
     public String getHari() {
@@ -42,27 +44,19 @@ public class Jadwal {
         this.matpelSatu = matpelSatu;
     }
 
-    public String getMatpelDua() {
-        return matpelDua;
+    public String getTanggal() {
+        return tanggal;
     }
 
-    public void setMatpelDua(String matpelDua) {
-        this.matpelDua = matpelDua;
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
-    public String getMatpelTiga() {
-        return matpelTiga;
+    public String getKd() {
+        return kd;
     }
 
-    public void setMatpelTiga(String matpelTiga) {
-        this.matpelTiga = matpelTiga;
-    }
-
-    public String getMatpelEmpat() {
-        return matpelEmpat;
-    }
-
-    public void setMatpelEmpat(String matpelEmpat) {
-        this.matpelEmpat = matpelEmpat;
+    public void setKd(String kd) {
+        this.kd = kd;
     }
 }

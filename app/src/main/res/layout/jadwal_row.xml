@@ -50,7 +50,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/matpel_dua"
+                    android:id="@+id/tanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
@@ -62,7 +62,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/matpel_satu"/>
 
                 <TextView
-                    android:id="@+id/matpel_tiga"
+                    android:id="@+id/kd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
@@ -71,19 +71,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/matpel_dua"/>
+                    app:layout_constraintTop_toBottomOf="@+id/tanggal"/>
 
-                <TextView
-                    android:id="@+id/matpel_empat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:paddingLeft="16dp"
-                    android:text="Agama Islam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/matpel_tiga"/>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

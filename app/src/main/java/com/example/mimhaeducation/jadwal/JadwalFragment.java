@@ -69,23 +69,16 @@ public class JadwalFragment extends Fragment {
 
         t.start();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv_expandables_jadwal);
 
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_expandables_jadwal);
+        new FirebaseDatabaseHelper().readJadwals(new FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Jadwal> jadwals, List<String> keys) {
+                new JadwalAdapter().setConfig(recyclerView, getContext(),
+                        jadwals,keys);
+            }
+        });
 
-        initData();
-        initRecyclerView();
         return view;
-    }
-
-    private void initRecyclerView() {
-        JadwalAdapter jadwalAdapter = new JadwalAdapter(jadwalList);
-        recyclerView.setAdapter(jadwalAdapter);
-    }
-
-    private void initData() {
-        jadwalList = new ArrayList<>();
-        jadwalList.add(new Jadwal("Senin", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
-        jadwalList.add(new Jadwal("Selasa", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
-        jadwalList.add(new Jadwal("Rabu", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Agama Islam"));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.mimhaeducation.jadwal;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,71 +8,94 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mimhaeducation.R;
 
 import java.util.List;
 
-class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalVH> {
+public class JadwalAdapter {
 
-    List<Jadwal> jadwalList;
-    public JadwalAdapter(List<Jadwal> jadwalList) {
-        this.jadwalList = jadwalList;
+    private Context mContext;
+    private JadwalsAdapter mJadwalAdapter;
+
+
+    public void setConfig (RecyclerView recyclerView, Context context, List<Jadwal> jadwals, List<String> keys){
+        mContext = context;
+        mJadwalAdapter = new JadwalsAdapter(jadwals,keys);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(mJadwalAdapter);
+
     }
 
-    @NonNull
-    @Override
-    public JadwalVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.jadwal_row, parent, false);
-        return new JadwalVH(view);
-    }
+    class JadwalItemView extends RecyclerView.ViewHolder{
+        private TextView mHari;
+        private TextView mMapel;
+        private TextView mTanggal;
+        private TextView mKd;
 
-    @Override
-    public void onBindViewHolder(@NonNull JadwalAdapter.JadwalVH holder, int position) {
-        Jadwal jadwal = jadwalList.get(position);
-        holder.hariTextView.setText(jadwal.getHari());
-        holder.matpelSatuTextView.setText(jadwal.getMatpelSatu());
-        holder.matpelDuaTextView.setText(jadwal.getMatpelDua());
-        holder.matpelTigaTextView.setText(jadwal.getMatpelTiga());
-        holder.matpelEmpatTextView.setText(jadwal.getMatpelEmpat());
+        private String key;
+        ConstraintLayout expandableLayoutNilai;
 
-        boolean isExpanded = jadwalList.get(position).isExpanded();
-        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-    }
 
-    @Override
-    public int getItemCount() {
-        return jadwalList.size();
-    }
+        public JadwalItemView(ViewGroup parent){
+            super(LayoutInflater.from(mContext)
+                    .inflate(R.layout.jadwal_row, parent, false));
 
-    public class JadwalVH extends RecyclerView.ViewHolder {
-        TextView hariTextView;
-        TextView matpelSatuTextView;
-        TextView matpelDuaTextView;
-        TextView matpelTigaTextView;
-        TextView matpelEmpatTextView;
+            mHari = (TextView) itemView.findViewById(R.id.hari);
+            mMapel = (TextView) itemView.findViewById(R.id.matpel_satu);
+            mTanggal = (TextView) itemView.findViewById(R.id.tanggal);
+            mKd = (TextView) itemView.findViewById(R.id.kd);
 
-        ConstraintLayout expandableLayout;
+            expandableLayoutNilai = itemView.findViewById(R.id.expandableLayout);
 
-        public JadwalVH(@NonNull final View itemView) {
-            super(itemView);
-
-            hariTextView = itemView.findViewById(R.id.hari);
-            matpelSatuTextView= itemView.findViewById(R.id.matpel_satu);
-            matpelDuaTextView = itemView.findViewById(R.id.matpel_dua);
-            matpelTigaTextView = itemView.findViewById(R.id.matpel_tiga);
-            matpelEmpatTextView = itemView.findViewById(R.id.matpel_empat);
-            expandableLayout = itemView.findViewById(R.id.expandableLayout);
-
-            hariTextView.setOnClickListener(new View.OnClickListener() {
+            mHari.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    Jadwal jadwal = jadwalList.get(getAdapterPosition());
+                public void onClick(View v) {
+                    Jadwal jadwal = mJadwalAdapter.mJadwalList.get(getAdapterPosition());
                     jadwal.setExpanded(!jadwal.isExpanded());
-                    notifyItemChanged(getAdapterPosition());
+                    mJadwalAdapter.notifyItemChanged(getAdapterPosition());
                 }
             });
+
+        }
+
+        public void bind(Jadwal jadwal, String key){
+            mHari.setText(jadwal.getHari());
+            mMapel.setText(jadwal.getMatpelSatu());
+            mTanggal.setText(jadwal.getTanggal());
+            mKd.setText(jadwal.getKd());
+            this.key = key;
+        }
+    }
+
+    class JadwalsAdapter extends RecyclerView.Adapter<JadwalItemView>{
+        private List<Jadwal> mJadwalList;
+        private List<String> mKeys;
+
+        public JadwalsAdapter(List<Jadwal> mJadwalList, List<String> mKeys) {
+            this.mJadwalList = mJadwalList;
+            this.mKeys = mKeys;
+        }
+
+        @NonNull
+        @Override
+        public JadwalItemView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new JadwalItemView(parent);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull JadwalItemView holder, int position) {
+            holder.bind(mJadwalList.get(position), mKeys.get(position));
+
+            boolean isExpanded = mJadwalAdapter.mJadwalList.get(position).isExpanded();
+            holder.expandableLayoutNilai.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mJadwalList.size();
         }
     }
 }
