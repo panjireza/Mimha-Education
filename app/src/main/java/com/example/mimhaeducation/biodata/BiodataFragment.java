@@ -27,11 +27,10 @@ public class BiodataFragment extends Fragment {
 
     private TextView tvEmail,tvNama,tvNis;
     private Button btnLogout;
-    FirebaseUser user;
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-
+    private FirebaseUser user;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     @Nullable
     @Override
@@ -49,14 +48,14 @@ public class BiodataFragment extends Fragment {
         tvNis=view.findViewById(R.id.tvNis);
         btnLogout=view.findViewById(R.id.btnLogout);
 
-        Query query =databaseReference.orderByChild("Email").equalTo(user.getEmail());
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String nama = ""+ds.child("Nama").getValue();
-                    String email = ""+ds.child("Email").getValue();
-                    String nis = ""+ds.child("Nis").getValue();
+                    String nama = ""+ds.child("nama").getValue();
+                    String email = ""+ds.child("email").getValue();
+                    String nis = ""+ds.child("nis").getValue();
 
                     tvEmail.setText(email);
                     tvNama.setText(nama);

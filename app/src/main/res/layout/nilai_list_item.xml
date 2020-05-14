@@ -79,6 +79,7 @@ android:padding="8dp">
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvOl"
         style="@style/CardView_jadwalShalat">
 
         <LinearLayout
@@ -101,6 +102,7 @@ android:padding="8dp">
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvAgama"
         style="@style/CardView_jadwalShalat">
 
         <LinearLayout

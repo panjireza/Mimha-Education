@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btLogin = findViewById(R.id.login);
         tvRegistrasi = findViewById(R.id.tvRegistrasi);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("auth");
+        ref = FirebaseDatabase.getInstance().getReference("siswa").child("users");
 
         mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();

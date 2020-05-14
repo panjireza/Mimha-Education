@@ -22,7 +22,7 @@ public class FirebaseDatabaseHelper {
 
     public FirebaseDatabaseHelper(){
         mDatabase = FirebaseDatabase.getInstance();
-        mReferenceJadwals =mDatabase.getReference("siswa").child("Jadwal");
+        mReferenceJadwals =mDatabase.getReference("jadwal");
     }
 
     public void readJadwals(final DataStatus dataStatus){

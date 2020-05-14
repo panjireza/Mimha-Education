@@ -33,15 +33,21 @@ import java.util.List;
 
 public class NilaiFragment extends Fragment {
 
+    public void authMethod(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+    }
+
     private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
     private TextView nilaiMath,nilaiBind,nilaiOlahragaa,nilaiAgama;
-    private CardView cvMath,cvBind;
+    private CardView cvMath,cvBind,cvOl,cvAgama;
 
-    private TextView mathUh1,mathUh2,mathUh3;
+    private TextView mathUh1,mathUh2,mathUh3, mapel;
 
     @Nullable
     @Override
@@ -50,9 +56,7 @@ public class NilaiFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.nilai_list_item, container, false);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        authMethod();
         databaseReference = firebaseDatabase.getReference("siswa").child("users");
 
         nilaiMath=view.findViewById(R.id.tvNilaiMath);
@@ -61,15 +65,17 @@ public class NilaiFragment extends Fragment {
         nilaiAgama=view.findViewById(R.id.tvNilaiAgama);
         cvMath=view.findViewById(R.id.cvMath);
         cvBind=view.findViewById(R.id.cvBind);
+        cvOl=view.findViewById(R.id.cvOl);
+        cvAgama=view.findViewById(R.id.cvAgama);
 
 
-        Query query =databaseReference.orderByChild("Email").equalTo(user.getEmail());
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String math = ""+ds.child("math").getValue();
-                    String bind = ""+ds.child("bind").getValue();
+                    String math = ""+ds.child("matematika").getValue();
+                    String bind = ""+ds.child("bahasa").getValue();
                     String olahraga = ""+ds.child("olahraga").getValue();
                     String agama = ""+ds.child("agama").getValue();
 
@@ -105,25 +111,37 @@ public class NilaiFragment extends Fragment {
             }
         });
 
+        cvOl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                olahragaDialog();
+            }
+        });
+
+        cvAgama.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agamaDialog();
+            }
+        });
+
         return view;
     }
 
     private void mathDialog() {
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("siswa").child("Matematika");
-
+        authMethod();
+        databaseReference = firebaseDatabase.getReference("siswa").child("matematika");
 
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
         View mView = getLayoutInflater().inflate(R.layout.math_dialog, null);
 
+        mapel=mView.findViewById(R.id.tvmapel);
         mathUh1=mView.findViewById(R.id.uh1);
         mathUh2=mView.findViewById(R.id.uh2);
         mathUh3=mView.findViewById(R.id.uh3);
 
-        Query query =databaseReference.orderByChild("Email").equalTo(user.getEmail());
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -132,6 +150,7 @@ public class NilaiFragment extends Fragment {
                     String uh2 = ""+ds.child("uh2").getValue();
                     String uh3 = ""+ds.child("uh3").getValue();
 
+                    mapel.setText("Nilai Matematika");
                     mathUh1.setText(uh1);
                     mathUh2.setText(uh2);
                     mathUh3.setText(uh3);
@@ -151,20 +170,18 @@ public class NilaiFragment extends Fragment {
 
     private void bindDialog() {
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("siswa").child("Bindo");
-
+        authMethod();
+        databaseReference = firebaseDatabase.getReference("siswa").child("bahasa");
 
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
         View mView = getLayoutInflater().inflate(R.layout.math_dialog, null);
 
+        mapel=mView.findViewById(R.id.tvmapel);
         mathUh1=mView.findViewById(R.id.uh1);
         mathUh2=mView.findViewById(R.id.uh2);
         mathUh3=mView.findViewById(R.id.uh3);
 
-        Query query =databaseReference.orderByChild("Email").equalTo(user.getEmail());
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -173,6 +190,87 @@ public class NilaiFragment extends Fragment {
                     String uh2 = ""+ds.child("uh2").getValue();
                     String uh3 = ""+ds.child("uh3").getValue();
 
+                    mapel.setText("Nilai Bahasa Indonesia");
+                    mathUh1.setText(uh1);
+                    mathUh2.setText(uh2);
+                    mathUh3.setText(uh3);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+    private void olahragaDialog() {
+
+        authMethod();
+        databaseReference = firebaseDatabase.getReference("siswa").child("olahraga");
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
+        View mView = getLayoutInflater().inflate(R.layout.math_dialog, null);
+
+        mapel=mView.findViewById(R.id.tvmapel);
+        mathUh1=mView.findViewById(R.id.uh1);
+        mathUh2=mView.findViewById(R.id.uh2);
+        mathUh3=mView.findViewById(R.id.uh3);
+
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    String uh1 = ""+ds.child("uh1").getValue();
+                    String uh2 = ""+ds.child("uh2").getValue();
+                    String uh3 = ""+ds.child("uh3").getValue();
+
+                    mapel.setText("Nilai Olahraga");
+                    mathUh1.setText(uh1);
+                    mathUh2.setText(uh2);
+                    mathUh3.setText(uh3);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+    private void agamaDialog() {
+
+        authMethod();
+        databaseReference = firebaseDatabase.getReference("siswa").child("agama");
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
+        View mView = getLayoutInflater().inflate(R.layout.math_dialog, null);
+
+        mapel=mView.findViewById(R.id.tvmapel);
+        mathUh1=mView.findViewById(R.id.uh1);
+        mathUh2=mView.findViewById(R.id.uh2);
+        mathUh3=mView.findViewById(R.id.uh3);
+
+        Query query =databaseReference.orderByChild("email").equalTo(user.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    String uh1 = ""+ds.child("uh1").getValue();
+                    String uh2 = ""+ds.child("uh2").getValue();
+                    String uh3 = ""+ds.child("uh3").getValue();
+
+                    mapel.setText("Nilai Pendidikan Agama");
                     mathUh1.setText(uh1);
                     mathUh2.setText(uh2);
                     mathUh3.setText(uh3);
