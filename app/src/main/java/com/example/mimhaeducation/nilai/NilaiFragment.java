@@ -57,7 +57,7 @@ public class NilaiFragment extends Fragment {
         View view = inflater.inflate(R.layout.nilai_list_item, container, false);
 
         authMethod();
-        databaseReference = firebaseDatabase.getReference("siswa").child("users");
+        databaseReference = firebaseDatabase.getReference("siswa").child("job1");
 
         nilaiMath=view.findViewById(R.id.tvNilaiMath);
         nilaiBind=view.findViewById(R.id.tvNilaiBind);

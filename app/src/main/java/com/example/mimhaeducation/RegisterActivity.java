@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         btRegister = findViewById(R.id.btRegister);
         tvLogin = findViewById(R.id.tvLogin);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("siswa").child("users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("siswa").child("job1");
         firebaseAuth = FirebaseAuth.getInstance();
 
         tvLogin.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             password
                                     );
 
-                                    FirebaseDatabase.getInstance().getReference("siswa").child("users")
+                                    FirebaseDatabase.getInstance().getReference("siswa").child("job1")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(siswa).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
